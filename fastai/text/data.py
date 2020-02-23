@@ -357,7 +357,7 @@ class TextList(ItemList):
             items.append([i, txt_x] if self._is_lm else [txt_x, y])
         items = np.array(items)
         df = pd.DataFrame({n:items[:,i] for i,n in enumerate(names)}, columns=names)
-        with pd.option_context('display.max_colwidth', -1):
+        with pd.option_context('display.max_colwidth', pd_max_colwidth()):
             display(HTML(df.to_html(index=False)))
 
     def show_xyzs(self, xs, ys, zs, max_len:int=70):
@@ -369,7 +369,7 @@ class TextList(ItemList):
             items.append([txt_x, y, z])
         items = np.array(items)
         df = pd.DataFrame({n:items[:,i] for i,n in enumerate(names)}, columns=names)
-        with pd.option_context('display.max_colwidth', -1):
+        with pd.option_context('display.max_colwidth', pd_max_colwidth()):
             display(HTML(df.to_html(index=False)))
 
 class LMLabelList(EmptyLabelList):
